@@ -120,7 +120,7 @@
 			var wrapper = document.querySelector('#list-wrapper')
 			// wrapper.innerHTML = ''
 
-			var url = 'http://127.0.0.1:8000/api/task-list/'
+			var url = 'api/task-list/'
 
 			fetch(url)
 			.then(resp => resp.json())
@@ -199,10 +199,10 @@
 		form.addEventListener('submit', function(e){
 			e.preventDefault()
 			console.log('form submit')
-			var url = 'http://127.0.0.1:8000/api/task-create/'
+			var url = 'api/task-create/'
 
 			if (activeItem != null) {
-				var url = `http://127.0.0.1:8000/api/task-update/${activeItem.id}/`
+				var url = `api/task-update/${activeItem.id}/`
 				activeItem = null
 			}
 
@@ -229,7 +229,7 @@
 
 		function deleteItem(item){
 			console.log('delete clicked')
-			fetch(`http://127.0.0.1:8000/api/task-delete/${item.id}/`,{
+			fetch(`api/task-delete/${item.id}/`,{
 				method: 'DELETE',
 				headers:{
 					'Content-Type':'application/json',
@@ -244,7 +244,7 @@
 			console.log('striked')
 
 			item.completed = !item.completed
-			fetch(`http://127.0.0.1:8000/api/task-update/${item.id}/`,{
+			fetch(`api/task-update/${item.id}/`,{
 				method: 'POST',
 				headers:{
 					'Content-Type':'application/json',
